@@ -17,8 +17,9 @@
    - [ ] 在考虑是否也需要加入自定义选项
 
 ## 展示图如下
-![1](1.png)
+![1](https://i.loli.net/2021/10/18/c5Z4nqQh3Nr7WJT.png)
 
-![2](2.png)
+![2](https://i.loli.net/2021/10/18/QEA7L9NdlkFCIuj.png)
 
-![3](3.png)
+![3](https://i.loli.net/2021/10/18/dCYi8kTW1BsGZw5.png)
+
