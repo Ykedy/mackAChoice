@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./iconfont.css">
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="fortuneWheel"><i class="iconfont icon-zhuanpan"></i><span>大转盘</span></div>
+        <div class="twoChoice"> <i class="iconfont icon-navigation"></i><span>Yes or No</span></div>
+        <div class="playPoker"> <i class="iconfont icon-puke"></i><span>抽扑克</span></div>
+    </div>
+    <!-- 大转盘 -->
+    <div class="wheelBody">
+        <div class="addTextWheel">
+            <ul>
+                <li><span class="iconfont icon-1_round"></span><input type="text" class="wheelText"
+                        placeholder="写点什么.."></li>
+                <li><span class="iconfont icon-2_round"></span><input type="text" class="wheelText"
+                        placeholder="写点什么.."></li>
+                <li><span class="iconfont icon-3_round"></span><input type="text" class="wheelText"
+                        placeholder="写点什么.."></li>
+                <li><span class="iconfont icon-4_round"></span><input type="text" class="wheelText"
+                        placeholder="写点什么.."></li>
+                <li><span class="iconfont icon-5_round"></span><input type="text" class="wheelText"
+                        placeholder="写点什么.."></li>
+                <li><span class="iconfont icon-6_round"></span><input type="text" class="wheelText"
+                        placeholder="写点什么.."></li>
+                <li class="textBtn"><span class="iconfont icon-check_circled"></span>确&nbsp;&nbsp;定</li>
+                <li class="textDeleteBtn"><span class="iconfont icon-quxiao"></span>清&nbsp;&nbsp;除</li>
+                <li class="saveCustom">保&nbsp;存&nbsp;自&nbsp;定&nbsp;义</li>
+            </ul>
+
+        </div>
+        <div class="wheelBox">
+            <div class="wheel">
+                <canvas id="tutorial" width="400" height="400">你需要更新</canvas>
+                <canvas id="btn" width="200" height="200"></canvas>
+            </div>
+        </div>
+        <!-- 预设 -->
+        <div class="save">
+            <div class="titleAlert">
+                <input class="inputTitle" placeholder="输入储存的主题名..." maxlength="16">
+                <div class="saveTitle">确定</div>
+                <div class="unsaveTitle">取消</div>
+            </div>
+            <div class="shadow"></div>
+            <div class="showCustom">
+                <div>预设</div>
+                <div class="customBox"></div>
+            </div>
+        </div>
+    </div>
+    <!-- yes or no -->
+    <div class="twoBody">
+        <div class="choicebtnTwo"> 开始</div>
+        <div class="yesResult">yes</div>
+        <div class="noResult">no</div>
+    </div>
+    <!-- 抽卡 -->
+    <div class="pokerBody">
+        <div class="numBox">
+            输入生成卡牌数量：<input class="cardNum" placeholder="2~20" maxlength="2">
+            <span class="toShowCardName iconfont icon-check_circled"> &nbsp;确定</span>
+        </div>
+        <div class="cardInputBox"></div>
+        <div class="toShowCardbtn iconfont icon-navigation"> 创建卡牌</div>
+        <div class="cardBox"></div>
+        <!-- <div class="card">
+            <div class="cardSun">&#127137;</div>
+            <div class="anwser">1231333drdddeeeeeeeee23</div>
+        </div> -->
+
+
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

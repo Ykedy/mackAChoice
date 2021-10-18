@@ -1,0 +1,418 @@
+/* reset */
+body,html,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,header,memu,section,p,input,td,th,ins {
+    padding: 0;
+    margin: 0;
+}
+/* 小圆点 */
+ul,ol,li{
+    list-style: none;
+}
+/* 下划线 */
+a {
+    text-decoration: none;
+}
+i,em {
+    font-style: normal;
+}
+input,textarea,button,select,a{
+    /* 外边框 */
+    outline: none;
+    border: none;
+}
+
+
+/* 导航区 */
+.nav{
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+/* 导航-公共部分 */
+.fortuneWheel,
+.twoChoice,
+.playPoker{
+    position: relative;    
+    line-height: 50px;    
+    height: 40px;
+    cursor: pointer;
+    user-select: none;
+}
+.fortuneWheel::before,
+.fortuneWheel::after,
+.twoChoice::before,
+.twoChoice::after,
+.playPoker::before,
+.playPoker::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 40px;
+}
+.fortuneWheel i ,
+.twoChoice i,
+.playPoker i{
+    position: absolute;
+    left: -10px;
+    top: 5px;
+    display: inline-block;
+    width: 30px;
+    --height: 30px;
+    text-align: center;
+    line-height: var(--height);
+    border-radius: 50%;
+}
+.fortuneWheel span,
+.twoChoice span,
+.playPoker span{
+    position: absolute;
+    top: -4px;
+    font-size: 14px;
+    font-weight: 800;
+    white-space: nowrap;
+    z-index: 2;
+}
+/* 大转盘 */
+.fortuneWheel{
+    margin-left: 40px;
+    width: 70px;
+    background-color: #e3f1fe;
+}
+
+.fortuneWheel::before{
+    left: -20px;
+    background-color: #e3f1fe;
+    border-radius: 50px 0 0 50px;
+}
+.fortuneWheel::after{
+    right: -20px;
+    background-color: #e3f1fe;
+    border-radius: 0 50px   50px 0;
+}
+.fortuneWheel i{
+    background-color: #0078fc;
+    color: #fff;
+}
+.fortuneWheel span{  
+    left: 25px;
+    color: #0078fc;
+}
+
+
+/* 导航-yes or no */
+.twoChoice{
+    margin-left: 50px;
+    width: 90px;
+    background-color: #fce3ee;
+}
+.twoChoice::before{
+    left: -20px;
+    background-color: #fce3ee;
+    border-radius: 50px 0 0 50px;
+}
+.twoChoice::after{
+    right: -20px;
+    background-color: #fce3ee;
+    border-radius: 0 50px 50px 0;
+}
+.twoChoice i{
+    background-color: #fd2a54;
+    color: #fff;
+}
+.twoChoice span{
+    left: 25px;
+    color: #fd2a54;
+}
+
+
+/* 导航-扑克 */
+.playPoker{
+    margin-left: 50px;
+    width: 70px;
+    background-color: #efeefc;
+}
+
+.playPoker::before{
+    left: -20px;
+    background-color: #efeefc;
+    border-radius: 50px 0 0 50px;
+}
+.playPoker::after{
+    right: -20px;
+    background-color: #efeefc;
+    border-radius: 0 50px   50px 0;
+}
+.playPoker i{
+    background-color: #5d59eb;
+    color: #fff;
+}
+.playPoker span{  
+    left: 25px;
+    color: #5d59eb;
+}
+/* 大转盘 */
+.wheelBody{
+    display: flex;
+}
+/* 大转盘-抽奖盒子 */
+.wheelBox {
+    margin-left: 40px;
+}
+.wheelBox .wheel {
+    position: relative;
+    width: 400px;
+    height: 400px;
+
+}
+#btn {
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    cursor: pointer;
+}
+
+/* 大转盘-文字 */
+.addTextWheel{
+    margin-left: 30px;
+    margin-top: 60px;
+}
+.addTextWheel li{
+    width: 195px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 22px;
+    border-collapse:collapse;
+    border: 1px solid #0078fc;
+    border-top: none;
+}
+.addTextWheel li:nth-child(1){
+    border-top: 1px solid #0078fc;
+}
+.addTextWheel .iconfont{
+    background-color: #0078fc;
+    color:#fff;
+    border-radius: 80%;
+}
+.addTextWheel span {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.addTextWheel .textBtn,.addTextWheel .textDeleteBtn,.wheelBody .addTextWheel .saveCustom {
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    color: #0078fc;
+    user-select: none;
+}
+.addTextWheel .textBtn .iconfont,.addTextWheel .textDeleteBtn .iconfont {
+    margin-left: -20px;
+}
+.addTextWheel .textBtn:hover,.addTextWheel .textDeleteBtn:hover,.wheelBody .addTextWheel .saveCustom:hover   {
+    background-color: #0078fc;
+    color: white;
+}
+/* 大转盘自定义选项 */
+.save .titleAlert{
+    display: none;
+    position: absolute;
+    left: 20%;
+    top: 40%;
+    z-index: 999;
+    width: 270px;
+    height: 80px;
+    border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    user-select: none;
+}
+.save .shadow {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.55);
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top:0;
+    z-index: 900;
+}
+.save .titleAlert .inputTitle{
+    background-color: transparent;
+    height: 50px;
+    font-size: 20px;
+    text-align: center;
+}
+.save .titleAlert .saveTitle,.save .titleAlert .unsaveTitle{
+    width: 80px;
+}
+.save .titleAlert .saveTitle:hover,.save .titleAlert .unsaveTitle:hover{
+    color: #0078fc;
+}
+.save .showCustom{
+    user-select: none;
+    width: 200px;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 60px;
+    margin-left: 40px;
+    border:1px solid #98c9ff;
+    
+}
+.save .showCustom .customItem{
+    position: relative;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.save .showCustom .customItem:hover{
+    background-color: #98c9ff;
+    color: white;
+    cursor: pointer;
+}
+/* 删除 */
+.customBox .delBtn{
+    position: absolute;
+    right: 0px;
+    height: 40px;
+    width: 40px;
+    z-index: 99;
+}
+/* yes or no body*/
+.twoBody{
+    display: none;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 60px;
+    text-align: center;
+    user-select: none;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #fad2e1;
+    background-color: #fad2e1;
+    border-radius: 30%;
+    
+}
+.twoBody .choicebtnTwo{
+    display: inline-block;
+    font-weight: 900;
+    left: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    margin-top:220px ;
+    color: #fad2e1  ;
+    background-color: #fff;
+}
+.twoBody .choicebtnTwo:active{
+    color: #fff  ;
+    background-color: #fd2a54;
+}
+.twoBody .yesResult,.twoBody .noResult{
+    position: absolute;
+    display: none;
+    top: 70px;
+    left: 50%;
+    transform:translateX(-50%);
+    font-size: 90px;
+    font-weight: 900;
+    color:#000;
+}
+/* 抽卡body */
+.pokerBody{
+    display: none;
+    user-select: none;
+    width: 700px;
+    margin-left: 24px;
+    text-align: center;
+    background-color: #efeefc;
+    border-radius: 20px;
+}
+
+.pokerBody .numBox{
+    display: inline-block;
+    width: 700px;
+    height: 50px;
+    line-height: 50px;
+}
+.pokerBody .numBox .cardNum{
+    background-color: transparent;
+    width: 50px;
+    font-weight: 600;
+    font-size: 18px;
+    border-bottom: 3px #5d59eb dotted  ;
+    text-align: center;
+}
+.pokerBody .numBox .toShowCardName{
+    font-weight: 900;
+    color: #5d59eb;
+}
+.pokerBody .cardInputBox{
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.pokerBody .cardInputBox .anwserText {
+    box-sizing: border-box;
+    margin: 0 20px 20px;
+    background-color: transparent;
+    width: 300px;
+    border: 1px #5d59eb solid  ;
+    height: 40px;
+    line-height: 40;
+    padding-left: 10px;
+}
+.pokerBody .toShowCardbtn{
+    display: none;
+    color: #5d59eb;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+.pokerBody .toShowCardbtn:hover,.pokerBody .cardBox div:hover p,.pokerBody .numBox .toShowCardName:hover{
+    color: sandybrown;
+    cursor: pointer;
+}
+.pokerBody  .cardBox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.pokerBody .card{
+    display: inline-block;
+    position: relative;
+    width: 140px;
+    height: 270px;
+    line-height: 270px;
+    text-align: center;
+    overflow: hidden;
+}
+.pokerBody .cardSun{
+    font-size: 200px;
+    color: #1e1679;
+}
+.pokerBody .cardSun:hover{
+    color: #dd6538;
+    cursor: pointer;
+}
+.pokerBody .card .anwser {
+    display: none;
+    position: absolute;
+    left: 9px;
+    width: 87%;
+    height: 69%;
+    top: 15%;
+    border: 5px solid #dd6538;
+    line-height: 25px;
+    padding: 5px;
+    padding-top: 20%;
+    box-sizing: border-box;
+    font-weight: 700;
+    color: #dd6538;
+    font-family: '宋体','Microsoft YaHei', Arial, sans-serif;
+    word-wrap:break-word;
+
+}

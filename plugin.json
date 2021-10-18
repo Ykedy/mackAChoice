@@ -1,0 +1,15 @@
+{
+    "main": "index.html",
+    "logo": "logo.png",
+    "features": [
+        {
+            "code": "selection",
+            "explain": "做选择 Make a choice",
+            "cmds": [
+                "选择",
+                "selection",
+                "choice"
+            ]
+        }
+    ]
+}
