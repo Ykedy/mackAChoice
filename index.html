@@ -18,23 +18,12 @@
     </div>
     <!-- 大转盘 -->
     <div class="wheelBody">
+        <!-- 选择选项数 -->
+        <div class="optionNuberBox">选项数量：<input class="inputWheel" onfocus="onfocus" placeholder="2~18"  maxlength="2">
+            <span class="btnShowOption iconfont icon-navigation ">&nbsp;确定</span>
+        </div>
         <div class="addTextWheel">
-            <ul>
-                <li><span class="iconfont icon-1_round"></span><input type="text" class="wheelText"
-                        placeholder="写点什么.."></li>
-                <li><span class="iconfont icon-2_round"></span><input type="text" class="wheelText"
-                        placeholder="写点什么.."></li>
-                <li><span class="iconfont icon-3_round"></span><input type="text" class="wheelText"
-                        placeholder="写点什么.."></li>
-                <li><span class="iconfont icon-4_round"></span><input type="text" class="wheelText"
-                        placeholder="写点什么.."></li>
-                <li><span class="iconfont icon-5_round"></span><input type="text" class="wheelText"
-                        placeholder="写点什么.."></li>
-                <li><span class="iconfont icon-6_round"></span><input type="text" class="wheelText"
-                        placeholder="写点什么.."></li>
-                <li class="textBtn"><span class="iconfont icon-check_circled"></span>确&nbsp;&nbsp;定</li>
-                <li class="textDeleteBtn"><span class="iconfont icon-quxiao"></span>清&nbsp;&nbsp;除</li>
-                <li class="saveCustom">保&nbsp;存&nbsp;自&nbsp;定&nbsp;义</li>
+            <ul class="optionBox">
             </ul>
 
         </div>
@@ -57,6 +46,8 @@
                 <div class="customBox"></div>
             </div>
         </div>
+        <!-- 提示 -->
+        <div class="prompt"></div>
     </div>
     <!-- yes or no -->
     <div class="twoBody">
@@ -73,13 +64,10 @@
         <div class="cardInputBox"></div>
         <div class="toShowCardbtn iconfont icon-navigation"> 创建卡牌</div>
         <div class="cardBox"></div>
-        <!-- <div class="card">
-            <div class="cardSun">&#127137;</div>
-            <div class="anwser">1231333drdddeeeeeeeee23</div>
-        </div> -->
 
 
     </div>
+
     <script src="index.js"></script>
 </body>
 
