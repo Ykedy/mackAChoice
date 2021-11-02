@@ -9,7 +9,8 @@
    - [x] 基本的旋转功能
    - [x] 输入文字
    - [x] 自定义保存预设
-
+   - [x] 随机数使用`window.crypto.getRandomValues()`
+   
 2. yes or no
 
 3. 抽扑克

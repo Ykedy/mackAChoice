@@ -1,7 +1,6 @@
 const fortuneWheel = document.querySelector(".fortuneWheel");
 const twoChoice = document.querySelector(".twoChoice");
 const playPoker = document.querySelector(".playPoker");
-
 const wheelBody = document.querySelector('.wheelBody');
 const twoBody = document.querySelector('.twoBody');
 const pokerBody = document.querySelector('.pokerBody');
@@ -47,7 +46,7 @@ var dataBackup = [];
 var customTitleName = '';
 var dbData = {};
 var delBtn = []
-var wheelTexts, optionNum
+var wheelTexts, optionNum;
 // 自定义转盘的每一项
 var customContent = [];
 const dataWheel = {
@@ -74,40 +73,44 @@ btnShowOption.addEventListener('click', function () {
 
     optionNum = inputWheel.value;
     if (optionNum <= 18 && optionNum >= 2) { addOptionItem() }
-    
+
 
 })
 // 添加选项，并添加事件
-function addOptionItem(){
-    
-        optionBox.innerHTML = btnsHtml
-        for (let i = 0; i < optionNum; i++) {
-            optionBox.innerHTML = '<li><span class="iconfont icon-daohangquanzi"></span><input type="text" class="wheelText" placeholder = "写点什么.." ></li >' + optionBox.innerHTML
-        };
-        wheelTexts = document.querySelectorAll('.wheelText');
-        //生成画布
-        var textBtn = document.querySelector('.textBtn');
-        textBtn.addEventListener('click', function () {
-            var ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height)
-            filterContent(wheelTexts.length)
-            draw(dataBackup);
-        })
-        //清除内容
-        var textDeleteBtn = document.querySelector('.textDeleteBtn');
-        textDeleteBtn.addEventListener('click', function () {
-            for (let i = 0; i < optionNum; i++)
-                wheelTexts[i].value = ''
-        })
-        var saveCustom = document.querySelector(".saveCustom");
-        // 点击出现输入框，输入主题名字 
-        saveCustom.addEventListener("click", function () {
-            titleAlert.style.display = "flex";
-            shadow.style.display = "block";
-        })
+function addOptionItem() {
+
+    optionBox.innerHTML = btnsHtml
+    for (let i = 0; i < optionNum; i++) {
+        optionBox.innerHTML = '<li><span class="iconfont icon-daohangquanzi"></span><input type="text" class="wheelText" placeholder = "写点什么.." ></li >' + optionBox.innerHTML
+    };
+    wheelTexts = document.querySelectorAll('.wheelText');
+    //生成画布
+    var textBtn = document.querySelector('.textBtn');
+    textBtn.addEventListener('click', function () {
+        var ctx = canvas.getContext('2d');
+        // 重置次数
+        saveRandom = 0;
+        rotateTimes = 1;
+        canvas.setAttribute("style", "transform:rotate(0);")
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        filterContent(wheelTexts.length)
+        draw(dataBackup);
+    })
+    //清除内容
+    var textDeleteBtn = document.querySelector('.textDeleteBtn');
+    textDeleteBtn.addEventListener('click', function () {
+        for (let i = 0; i < optionNum; i++)
+            wheelTexts[i].value = ''
+    })
+    var saveCustom = document.querySelector(".saveCustom");
+    // 点击出现输入框，输入主题名字 
+    saveCustom.addEventListener("click", function () {
+        titleAlert.style.display = "flex";
+        shadow.style.display = "block";
+    })
 
 
-   
+
 }
 // 筛选传入的文字
 function filterContent(num) {
@@ -129,7 +132,7 @@ function filterContent(num) {
         }
     })
     // 如果全部都没写
-    if (spaceItem===num) {
+    if (spaceItem === num) {
         for (let i = 0; i < optionNum; i++) { dataBackup.push(' ') }
     }
     // 当有部分内容未填写时，随机填写
@@ -184,7 +187,8 @@ function draw(text) {
         var colorBox = ['#0078fc', '#e3f1fe', '#a2c5ea']
         ctx.save();
         for (var index = 0; index < num; index++) {
-            var angle = index * baseAngle;
+            // 为了使箭头所指的是正中间
+            var angle = index * baseAngle + 1.5 * Math.PI + baseAngle * 0.5;
             if (num % 2 === 1) {
                 if ((index + 1) % 2 != 0) {
                     ctx.fillStyle = colorBox[0];//设置每个扇形区域的颜色
@@ -335,30 +339,49 @@ function drawBtn() {
     ctx.font = '24px Microsoft YaHei';
     ctx.fillText('开始', radius - 24, radius + 6);
 }
+// 点击开始旋转
 btn.addEventListener('click', function () {
-
+    // 随机数
+    function getRandomInt(min, max) {
+        var byteArray = new Uint16Array(1);
+        window.crypto.getRandomValues(byteArray);
+        var range = max - min + 1;
+        var max_range = 65536;
+        if (byteArray[0] >= Math.floor(max_range / range) * range)
+            return getRandomInt(min, max);
+        return min + (byteArray[0] % range);
+    }
     if (!flag) {
         flag = true
-        const timer = 3.5
+        const timer = 3.7
+        var itemNum = document.querySelectorAll(".wheelText").length;
+        var random = getRandomInt(1, itemNum) * (360 / itemNum)
+        var num = random + 720 * rotateTimes + saveRandom;
+
         canvas.setAttribute("style", "transform:rotate(0);")
-        var random = Math.random() * 360;
-        var num = random + 540 * rotateTimes + saveRandom;
         canvas.setAttribute("style", "transform:rotate(" + num + "deg);transition:all  " + timer + "s ease-out")
         rotateTimes++;
         saveRandom = random + saveRandom;
         setTimeout(() => {
             flag = false
-        }, timer * 1000 + 20)
+        }, timer * 1000 + 40)
     }
 })
 //预设选项
 //点击切换大转盘内容
 function changeContent(content) {
-    draw(content);
-    optionNum = content.length
-    addOptionItem()
-    for(let i =0 ;i<optionNum;i++){
-        wheelTexts[i].value = content[i]
+    if (!flag) {
+        // 重置次数
+        saveRandom = 0;
+        rotateTimes = 1;
+        canvas.setAttribute("style", "transform:rotate(0);")
+        draw(content);
+        optionNum = content.length
+        addOptionItem()
+        for (let i = 0; i < optionNum; i++) {
+            wheelTexts[i].value = content[i]
+
+        }
 
     }
 
